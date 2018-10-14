@@ -1,0 +1,10 @@
+{
+	"jsonrpc": "2.0",
+	"method": "follow_api.get_blog",
+	"params": {
+		"account": "steemit",
+		"start_entry_id": 0,
+		"limit": 1
+	},
+	"id": 1
+}
