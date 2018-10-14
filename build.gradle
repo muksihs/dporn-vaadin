@@ -29,4 +29,10 @@ dependencies {
 	
 	//compile "com.flowingcode.addons.applayout:app-layout-addon:1.0.4"
 	//compile 'com.vladsch.flexmark:flexmark-all:0.34.48'
+	compile "com.fasterxml.jackson.core:jackson-databind:2.9.7"
+}
+
+task "create-dirs" << {
+	sourceSets*.java.srcDirs*.each { it.mkdirs() }
+	sourceSets*.resources.srcDirs*.each { it.mkdirs() }
 }
