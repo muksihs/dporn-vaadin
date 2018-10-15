@@ -1,4 +1,4 @@
-package com.steem.muksihs;
+package com.steem.muksihs.model;
 
 public class Beneficiary {
 	private String account;

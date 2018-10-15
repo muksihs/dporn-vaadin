@@ -9,7 +9,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 
-import com.steem.muksihs.SteemObjectMapper;
+import com.steem.muksihs.util.SteemObjectMapper;
 
 public class RestClient {
 	private static SteemObjectMapper _mapper;

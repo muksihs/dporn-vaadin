@@ -1,4 +1,4 @@
-package com.steem.muksihs;
+package com.steem.muksihs.rest;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

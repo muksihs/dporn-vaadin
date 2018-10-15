@@ -1,4 +1,4 @@
-package com.steem.muksihs;
+package com.steem.muksihs.model;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -13,7 +13,7 @@ import com.fasterxml.jackson.databind.annotation.JsonNaming;
 
 @JsonNaming(SnakeCaseStrategy.class)
 @JsonInclude(Include.NON_NULL)
-public class Comment {
+public class Comment extends SteemJsonObject {
 	private long id;
 	private String author;
 	private String permlink;

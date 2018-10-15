@@ -1,4 +1,4 @@
-package com.steem.muksihs;
+package com.steem.muksihs.util;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;

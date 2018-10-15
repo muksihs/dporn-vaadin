@@ -1,4 +1,4 @@
-package com.steem.muksihs;
+package com.steem.muksihs.model;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
