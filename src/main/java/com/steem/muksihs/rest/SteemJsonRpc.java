@@ -4,9 +4,6 @@ import java.io.IOException;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.steem.muksihs.model.AccountHistoryEntries;
-import com.steem.muksihs.model.AccountHistoryParam;
-import com.steem.muksihs.model.AccountHistoryResponse;
 import com.steem.muksihs.model.BlogEntriesResponse;
 import com.steem.muksihs.model.BlogEntryQuery;
 import com.steem.muksihs.model.DiscussionsByAuthorBeforeDate;
@@ -29,7 +26,7 @@ public class SteemJsonRpc {
 		mapper = SteemObjectMapper.instance();
 	}
 
-	private String endpoint = "https://api.steem.house ";
+	private String endpoint = "https://api.steemit.com";
 
 	public String getEndpoint() {
 		return endpoint;
@@ -57,10 +54,4 @@ public class SteemJsonRpc {
 		return mapper.readValue(jsonString, DiscussionsResponse.class);
 	}
 	
-	public AccountHistoryResponse getAccountHistory(AccountHistoryParam param) throws JsonProcessingException, IOException {
-		JsonRpcRequest<AccountHistoryParam> postData = new JsonRpcRequest<AccountHistoryParam>("account_history_api.get_account_history", param);
-		String jsonString = RestClient.post(endpoint, postData);
-		return mapper.readValue(jsonString, AccountHistoryResponse.class);
-	}
-
 }

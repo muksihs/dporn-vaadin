@@ -9,29 +9,16 @@ import java.util.TimeZone;
 
 import org.apache.commons.lang3.time.DateUtils;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.steem.muksihs.model.AccountHistoryParam;
-import com.steem.muksihs.model.AccountHistoryResponse;
-import com.steem.muksihs.model.BlogEntriesResponse;
-import com.steem.muksihs.model.BlogEntry;
-import com.steem.muksihs.model.BlogEntryQuery;
 import com.steem.muksihs.model.Comment;
-import com.steem.muksihs.model.Discussion;
 import com.steem.muksihs.model.DiscussionsByAuthorBeforeDate;
 import com.steem.muksihs.model.DiscussionsResponse;
-import com.steem.muksihs.model.FollowerEntry;
-import com.steem.muksihs.model.FollowingQuery;
-import com.steem.muksihs.model.FollowingResponse;
-import com.steem.muksihs.model.SteemJsonObject;
 import com.steem.muksihs.rest.SteemJsonRpc;
-import com.steem.muksihs.util.SteemObjectMapper;
 
 public class ManualTester {
 	public static void main(String[] args) throws JsonProcessingException, IOException {
 		SteemJsonRpc rpc = new SteemJsonRpc();
 
-		history1(rpc);
 		discussions1(rpc);
 
 		// BlogEntryQuery param=new BlogEntryQuery();
@@ -63,14 +50,6 @@ public class ManualTester {
 		// }
 	}
 
-	private static void history1(SteemJsonRpc rpc) throws JsonProcessingException, IOException {
-		AccountHistoryParam param=new AccountHistoryParam();
-		param.setAccount("muksihs");
-		param.setLimit(10);
-		param.setStart(-1);
-		AccountHistoryResponse historyEntries = rpc.getAccountHistory(param);
-	}
-
 	// @JsonFormat(shape = JsonFormat.Shape.STRING, pattern =
 	// "yyyy-MM-dd'T'HH:mm:ss", timezone="UTC")
 	private static void discussions1(SteemJsonRpc rpc) throws JsonProcessingException, IOException {
@@ -78,7 +57,7 @@ public class ManualTester {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
 		sdf.setTimeZone(TimeZone.getTimeZone("UTC"));
 		DiscussionsByAuthorBeforeDate dparam = new DiscussionsByAuthorBeforeDate();
-		dparam.setAuthor("muksihs");
+		dparam.setAuthor("leatherdog-games");
 		dparam.setBeforeDate(new Date());
 		dparam.setLimit(10);
 		dparam.setStartPermlink("");
