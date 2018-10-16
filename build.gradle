@@ -15,6 +15,7 @@ vaadin {
 repositories {
 	jcenter()
 	vaadin.repositories()
+	maven { url 'https://jitpack.io' }
 }
 
 dependencies {
@@ -30,6 +31,10 @@ dependencies {
 	//compile "com.flowingcode.addons.applayout:app-layout-addon:1.0.4"
 	//compile 'com.vladsch.flexmark:flexmark-all:0.34.48'
 	compile "com.fasterxml.jackson.core:jackson-databind:2.9.7"
+	
+	//switch to steemj for easier access to account history as steem api appbase endpoint is failing
+	compile 'com.github.muksihs.steem-java-api-wrapper:steemj-core:d9f07155e7'
+	
 }
 
 task "create-dirs" << {
