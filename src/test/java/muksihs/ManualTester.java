@@ -1,6 +1,7 @@
 package muksihs;
 
 import java.io.IOException;
+import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -11,7 +12,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.TimeZone;
-import java.util.TreeSet;
 
 import org.apache.commons.lang3.time.DateUtils;
 
@@ -26,6 +26,7 @@ import eu.bittrade.libs.steemj.apis.follow.model.BlogEntry;
 import eu.bittrade.libs.steemj.base.models.AccountName;
 import eu.bittrade.libs.steemj.base.models.AppliedOperation;
 import eu.bittrade.libs.steemj.base.models.operations.CommentOperation;
+import eu.bittrade.libs.steemj.base.models.operations.virtual.CommentBenefactorRewardOperation;
 import eu.bittrade.libs.steemj.exceptions.SteemCommunicationException;
 import eu.bittrade.libs.steemj.exceptions.SteemResponseException;
 
@@ -33,13 +34,13 @@ public class ManualTester {
 	public static void main(String[] args)
 			throws JsonProcessingException, IOException, SteemCommunicationException, SteemResponseException {
 
-		AccountName accountName = new AccountName("muksihs");
+		AccountName accountName = new AccountName("dporn");
 		// blogEntryWalk(accountName);
 		accountHistoryWalk(accountName);
 
-		 SteemJsonRpc rpc = new SteemJsonRpc();
+//		 SteemJsonRpc rpc = new SteemJsonRpc();
 
-		 discussions1(rpc);
+//		 discussions1(rpc);
 
 		// BlogEntryQuery param=new BlogEntryQuery();
 		// param.setLimit(2);
@@ -112,6 +113,13 @@ public class ManualTester {
 			for (Integer entryId : sorted) {
 				AppliedOperation entry = entries.get(entryId);
 				prevEntryId = prevEntryId > 0 ? Math.min(prevEntryId, entryId) : entryId;
+				
+				if (entry.getOp() instanceof CommentBenefactorRewardOperation) {
+					CommentBenefactorRewardOperation cbro = (CommentBenefactorRewardOperation) entry.getOp();
+					System.out.println("CBRO: https://busy.org/@"+cbro.getAuthor().getName()+"/"+cbro.getPermlink().getLink());
+					continue;
+				}
+				
 				if (!(entry.getOp() instanceof CommentOperation)) {
 					continue;
 				}
