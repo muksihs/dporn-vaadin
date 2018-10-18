@@ -15,20 +15,14 @@
  */
 package co.dporn.vaadin.muksihs.routes.layouts;
 
-import java.util.Arrays;
-import java.util.Optional;
-
-import com.vaadin.flow.component.Component;
-import com.vaadin.flow.component.HasElement;
-import com.vaadin.flow.component.UI;
+import com.flowingcode.addons.applayout.AppLayout;
+import com.flowingcode.addons.applayout.PaperCard;
+import com.flowingcode.addons.applayout.menu.MenuItem;
+import com.vaadin.flow.component.html.H3;
+import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.page.BodySize;
 import com.vaadin.flow.component.page.Viewport;
-import com.vaadin.flow.di.Instantiator;
-import com.vaadin.flow.router.BeforeLeaveEvent;
-import com.vaadin.flow.router.BeforeLeaveObserver;
-import com.vaadin.flow.router.HasUrlParameter;
-import com.vaadin.flow.router.Route;
 import com.vaadin.flow.router.RouterLayout;
 import com.vaadin.flow.theme.Theme;
 import com.vaadin.flow.theme.lumo.Lumo;
@@ -40,41 +34,28 @@ import com.vaadin.flow.theme.lumo.Lumo;
 @Theme(value = Lumo.class, variant = "dark")
 @BodySize(height = "100%", width = "100%")
 @Viewport("width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes")
-public class ApplicationLayout extends VerticalLayout implements RouterLayout, BeforeLeaveObserver {
-
-	private final MenuBar menuBar;
+public class ApplicationLayout extends VerticalLayout implements RouterLayout {
 
 	/**
 	 * Constructor.
 	 */
 	public ApplicationLayout() {
 		System.out.println("#ApplicationLayout");
-		menuBar = new MenuBar();
 		init();
 	}
 
 	private void init() {
-		add(menuBar);
-	}
-
-	@SuppressWarnings("unchecked")
-	@Override
-	public void beforeLeave(BeforeLeaveEvent event) {
-		if (menuBar.isExternal(event.getNavigationTarget())) {
-			Component routeTarget = getRouteTarget((Class<? extends Component>) event.getNavigationTarget());
-
-			UI.getCurrent().getInternals().showRouteTarget(event.getLocation(),
-					routeTarget.getClass().getAnnotation(Route.class).value(), routeTarget, Arrays.asList(this));
-			((HasUrlParameter<?>) routeTarget).setParameter(event, null);
-			event.postpone();
-		}
-	}
-
-	@SuppressWarnings("unchecked")
-	protected <T extends HasElement> T getRouteTarget(Class<T> routeTargetType) {
-		UI ui = UI.getCurrent();
-		Optional<HasElement> currentInstance = ui.getInternals().getActiveRouterTargetsChain().stream()
-				.filter(component -> component.getClass().equals(routeTargetType)).findAny();
-		return (T) currentInstance.orElseGet(() -> Instantiator.get(ui).createRouteTarget(routeTargetType, null));
+		AppLayout app =new AppLayout("AppLayout Addon for Vaadin 10 Demo");
+		this.add(app);
+		app.setMenuItems(new MenuItem("Menu Item 1", "m1", ()->Notification.show("M1")));
+		app.setToolbarIconButtons(new MenuItem("Toolbar 1", "t1", ()->Notification.show("T1")));
+		
+//		H3 label = new H3();
+//    	label.setSizeFull();
+//    	label.setText("H3 Label");
+//    	PaperCard pc = new PaperCard(label,new MenuItem("Delete", "delete", ()->Notification.show("Delete action from card")));
+//    	pc.setWidth("100%");
+//    	add(label);
+//    	add(pc);
 	}
 }
