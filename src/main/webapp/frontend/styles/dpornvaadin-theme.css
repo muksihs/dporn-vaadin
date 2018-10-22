@@ -12,11 +12,11 @@ body {
 }
 
 .logo {
-	top: 0px;
-	left: 0;
+	top: 4px;
+	left: 4px;
 	width: 119px;
 	height: 124px;
-	margin: 0;
+	margin: 0px;
 	margin-left: 12px;
 	margin-right: 12px;
 	background: url("../images/dpornsitelogo.png");
@@ -53,6 +53,7 @@ body {
 	left: 0px;
 	margin: 0px;
 	padding: 0px;
+	height: 124px;
 	z-index: 50000;
 }
 

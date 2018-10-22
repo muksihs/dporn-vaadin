@@ -15,7 +15,8 @@
  */
 package co.dporn.vaadin.muksihs.routes.layouts;
 
-import com.vaadin.flow.component.orderedlayout.VerticalLayout;
+import com.vaadin.flow.component.AttachEvent;
+import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.page.BodySize;
 import com.vaadin.flow.component.page.Viewport;
 import com.vaadin.flow.router.RouterLayout;
@@ -29,14 +30,19 @@ import com.vaadin.flow.theme.lumo.Lumo;
 @Theme(value = Lumo.class, variant = "dark")
 @BodySize(height = "100%", width = "100%")
 @Viewport("width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes")
-public class ApplicationLayout extends VerticalLayout implements RouterLayout {
+public class MainLayout extends Div implements RouterLayout {
 
 	/**
 	 * Constructor.
 	 */
-	public ApplicationLayout() {
-		System.out.println("#ApplicationLayout");
+	public MainLayout() {
+		System.out.println("#MainLayout");
 		init();
+	}
+	
+	@Override
+	protected void onAttach(AttachEvent attachEvent) {
+		super.onAttach(attachEvent);
 	}
 
 	private void init() {

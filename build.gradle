@@ -47,7 +47,7 @@ bootWar {
 
 gretty {
 	servletContainer = "tomcat9"
-	managedClassReload = true
+	managedClassReload = false
 	springBootVersion = "2.0.6.RELEASE"
 	//springBoot = true
 }

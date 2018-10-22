@@ -15,16 +15,10 @@
  */
 package co.dporn.vaadin.muksihs.routes.layouts;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.vaadin.flow.component.AttachEvent;
 import com.vaadin.flow.component.html.Anchor;
 import com.vaadin.flow.component.html.Div;
 
-/**
- * Menu that is dynamically populated from registered routes.
- */
 @SuppressWarnings("serial")
 public class MenuBar extends Div {
 
@@ -33,12 +27,12 @@ public class MenuBar extends Div {
      */
     public MenuBar() {
     	System.out.println("#MenuBar");
-    	init();
     }
     
     @Override
     protected void onAttach(AttachEvent attachEvent) {
     	super.onAttach(attachEvent);
+    	init();
     }
 
     private void init() {
