@@ -63,7 +63,7 @@ dependencies {
     
 	//compile 'com.vaadin:vaadin-spring-boot-starter:11.0.0'
     compile 'org.springframework.boot:spring-boot-starter-web'
-	//providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
 	//providedRuntime 'org.springframework.boot:spring-boot-starter-jetty'
     
     
