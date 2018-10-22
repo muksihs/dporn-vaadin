@@ -1,7 +1,18 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+}
+
 plugins {
+ 	id "org.springframework.boot" version "2.0.6.RELEASE"
     id 'org.akhikhl.gretty' version '2.0.0'
     id 'com.devsoap.vaadin-flow' version '1.0.0.M5'
 }
+
+apply plugin: "war"
+apply plugin: "java"
+apply plugin: 'io.spring.dependency-management'
 
 vaadin {
     // Vaadin version to use
@@ -25,16 +36,20 @@ dependencies {
     compile         vaadin.core()
     // Include a compatible servlet API version
     compileOnly     vaadin.servletApi()
+    
+	compile 'com.vaadin:vaadin-spring-boot-starter:11.0.0'
+    compile 'org.springframework.boot:spring-boot-starter-web'
+	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+    
+    
     // Include a compatible slf4j version
-	runtime vaadin.slf4j()
-	
+	//compile vaadin.slf4j()
 	compile "com.flowingcode.addons.applayout:app-layout-addon:1.0.4"
 	//compile 'com.vladsch.flexmark:flexmark-all:0.34.48'
 	compile "com.fasterxml.jackson.core:jackson-databind:2.9.7"
 	
 	//switch to steemj for easier access to account history as steem api appbase endpoint is failing
 	compile 'com.github.muksihs.steem-java-api-wrapper:steemj-core:d9f07155e7'
-	
 }
 
 task "create-dirs" << {
