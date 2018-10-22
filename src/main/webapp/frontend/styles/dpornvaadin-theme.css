@@ -17,6 +17,8 @@ body {
 	width: 119px;
 	height: 124px;
 	margin: 0;
+	margin-left: 12px;
+	margin-right: 12px;
 	background: url("../images/dpornsitelogo.png");
 	display: inline-block;
 }
@@ -42,13 +44,13 @@ body {
 	left: 0;
 	max-width: 80%;
 	margin: auto;
-	height: 90px;
+	height: 124px;
 }
 
 .topnav {
 	position: fixed;
-	top: 2px;
-	left: 2px;
+	top: 0px;
+	left: 0px;
 	margin: 0px;
 	padding: 0px;
 	z-index: 50000;

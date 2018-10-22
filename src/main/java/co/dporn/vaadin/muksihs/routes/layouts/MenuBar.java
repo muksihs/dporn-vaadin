@@ -28,19 +28,17 @@ import com.vaadin.flow.component.html.Div;
 @SuppressWarnings("serial")
 public class MenuBar extends Div {
 
-    private List<Class<?>> external = new ArrayList<>();
-
     /**
      * Constructor that collects the routes and builds the menu.
      */
     public MenuBar() {
     	System.out.println("#MenuBar");
+    	init();
     }
     
     @Override
     protected void onAttach(AttachEvent attachEvent) {
     	super.onAttach(attachEvent);
-    	init();
     }
 
     private void init() {
@@ -52,9 +50,5 @@ public class MenuBar extends Div {
 		add(logo);
 		Anchor a = new Anchor();
 		a.setText("OPTION 1");
-    }
-
-    protected boolean isExternal(Class<?> target) {
-        return external.contains(target);
     }
 }
