@@ -15,11 +15,6 @@
  */
 package co.dporn.vaadin.muksihs.routes.layouts;
 
-import com.flowingcode.addons.applayout.AppLayout;
-import com.flowingcode.addons.applayout.PaperCard;
-import com.flowingcode.addons.applayout.menu.MenuItem;
-import com.vaadin.flow.component.html.H3;
-import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.page.BodySize;
 import com.vaadin.flow.component.page.Viewport;
@@ -45,17 +40,6 @@ public class ApplicationLayout extends VerticalLayout implements RouterLayout {
 	}
 
 	private void init() {
-		AppLayout app =new AppLayout("AppLayout Addon for Vaadin 10 Demo");
-		this.add(app);
-		app.setMenuItems(new MenuItem("Menu Item 1", "m1", ()->Notification.show("M1")));
-		app.setToolbarIconButtons(new MenuItem("Toolbar 1", "t1", ()->Notification.show("T1")));
-		
-//		H3 label = new H3();
-//    	label.setSizeFull();
-//    	label.setText("H3 Label");
-//    	PaperCard pc = new PaperCard(label,new MenuItem("Delete", "delete", ()->Notification.show("Delete action from card")));
-//    	pc.setWidth("100%");
-//    	add(label);
-//    	add(pc);
+		this.add(new MenuBar());
 	}
 }

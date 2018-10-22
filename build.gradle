@@ -2,17 +2,21 @@ buildscript {
     repositories {
         jcenter()
     }
+	dependencies {
+		classpath 'org.gretty:gretty:+'
+	}
 }
 
 plugins {
  	id "org.springframework.boot" version "2.0.6.RELEASE"
-    id 'org.akhikhl.gretty' version '2.0.0'
     id 'com.devsoap.vaadin-flow' version '1.0.0.M5'
 }
 
+apply plugin: 'org.gretty'
 apply plugin: "war"
 apply plugin: "java"
 apply plugin: 'io.spring.dependency-management'
+//apply plugin: "application"
 
 vaadin {
     // Vaadin version to use
@@ -29,22 +33,43 @@ repositories {
 	maven { url 'https://jitpack.io' }
 }
 
+springBoot {
+	mainClassName = 'co.dporn.vaadin.muksihs.DpornCoBoot'
+}
+
+bootJar {
+	mainClassName = 'co.dporn.vaadin.muksihs.DpornCoBoot'
+}
+
+bootWar {
+	mainClassName = 'co.dporn.vaadin.muksihs.DpornCoBoot'
+}
+
+gretty {
+	servletContainer = "tomcat9"
+	managedClassReload = true
+	springBootVersion = "2.0.6.RELEASE"
+	//springBoot = true
+}
+
 dependencies {
 	// Include BOM to stabilize Vaadin versions
 	compile         vaadin.bom()
     // Include only open source Vaadin components
     compile         vaadin.core()
+    compile			vaadin.dependency('spring-boot-starter')
     // Include a compatible servlet API version
     compileOnly     vaadin.servletApi()
     
-	compile 'com.vaadin:vaadin-spring-boot-starter:11.0.0'
+	//compile 'com.vaadin:vaadin-spring-boot-starter:11.0.0'
     compile 'org.springframework.boot:spring-boot-starter-web'
-	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+	//providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+	//providedRuntime 'org.springframework.boot:spring-boot-starter-jetty'
     
     
     // Include a compatible slf4j version
 	//compile vaadin.slf4j()
-	compile "com.flowingcode.addons.applayout:app-layout-addon:1.0.4"
+	//compile "com.flowingcode.addons.applayout:app-layout-addon:1.0.4"
 	//compile 'com.vladsch.flexmark:flexmark-all:0.34.48'
 	compile "com.fasterxml.jackson.core:jackson-databind:2.9.7"
 	
